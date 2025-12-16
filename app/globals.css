@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/* Hide Next.js Dev Indicator */
+[data-nextjs-toast],
+[data-nextjs-dialog-overlay],
+#nextjs-dev-indicator {
+  display: none !important;
+}
+
 :root {
   --background: #ffffff;
   --foreground: #171717;
@@ -14,7 +21,8 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #000000;
+    /* Deepest black for OLED/Premium feel */
     --foreground: #ededed;
   }
 }
@@ -23,4 +31,13 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: var(--font-sans), Arial, Helvetica, sans-serif;
+  height: 100vh;
+  /* Ensure full height */
+}
+
+/* Custom Selection */
+::selection {
+  background-color: rgba(59, 130, 246, 0.3);
+  /* Blue selection */
+  color: #fff;
 }

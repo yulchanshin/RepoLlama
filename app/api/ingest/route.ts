@@ -32,6 +32,13 @@ export async function POST(request: Request) {
 
         for (const file of files) {
             try {
+                // Check file size first
+                const stats = await fs.stat(file);
+                if (stats.size > 1024 * 1024) { // 1MB limit per file
+                    console.warn(`Skipping large file: ${file} (${(stats.size / 1024 / 1024).toFixed(2)} MB)`);
+                    continue;
+                }
+
                 const content = await fs.readFile(file, 'utf-8');
                 const chunks = chunkFile(content);
 

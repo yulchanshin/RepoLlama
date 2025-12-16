@@ -43,7 +43,7 @@ export async function POST(request: Request) {
 
         // 5. Create a TransformStream to pass-through the Ollama stream
         // We want to send the sources as a header, so the client knows where the info came from
-        const sourcesJson = JSON.stringify(topChunks.map(c => ({ source: c.source, text: c.text })));
+        const sourcesJson = JSON.stringify(topChunks.map(c => ({ source: c.source })));
 
         // Create a new response based on the Ollama stream
         // We can just return the stream directly, but we need to handle the format
